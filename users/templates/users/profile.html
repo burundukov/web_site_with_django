@@ -1,0 +1,28 @@
+{% extends 'top/main.html' %}
+
+{% block main_section %}
+
+<div class="form-section">
+	<h2>Привет, {{ user.username }}</h2>
+	<div class="media text-muted pt-3">
+		<img class="bd-placeholder-img mr-2 rounded" width="64" height="64" src="{{ user.profile.image.url }}">
+	    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+	        <strong class="d-block text-gray-dark">{{ user.username }}</strong>
+	        <b>email:</b> {{ user.email }}
+   		 </p>
+	</div>
+	<h3 class="mt-4">Изменить данные пользователя</h3>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ update_user }}
+		{{ img_profile }}
+	<button type="submit" class="btn btn-warning">Обновить данные</button>
+	</form>
+	
+</div>
+
+<br>	
+<p>Скоро ты сможешь делать в своем профиле все что угодно.</p>
+
+{% endblock main_section %}
+

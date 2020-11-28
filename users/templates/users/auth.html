@@ -1,0 +1,17 @@
+{% extends 'top/main.html' %}
+
+{% block main_section %}
+
+<div class="form-section">
+	<h2>Авторизация</h2>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+	<button type="submit" class="btn btn-warning">Войти</button>
+	</form>
+</div>
+	
+
+
+{% endblock main_section %}
+

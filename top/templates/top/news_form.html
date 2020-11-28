@@ -1,0 +1,17 @@
+{% extends 'top/main.html' %}
+
+{% block main_section %}
+
+<div class="form-section">
+	<h2>Добавление новой статьи</h2>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+	<button type="submit" class="btn btn-warning">Добавить статью</button>
+	</form>
+</div>
+	
+<hr>
+Уже зарегестрированы? <a href="{% url 'auth' %}">Войти в личный кабинет</a>
+
+{% endblock main_section %}

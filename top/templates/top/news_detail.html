@@ -1,0 +1,23 @@
+{% extends 'top/main.html' %}
+
+{% block main_section %}
+
+	<h2>{{ object.title }}</h2>
+	<p>{{ object.text }}</p>
+	<div class="row text-muted">
+		<img width="64" height="64" src="{{ object.author.profile.image.url }}" alt="{{ object.author }}" class="bd-placeholder-img mr-2 rounded">
+		<div class="mt-3">
+			<p>Автор: {{ object.author }}, {{ object.date|date:"j F Y, время: H:i:s" }}</p>
+		</div>
+	</div>
+	<hr>
+	{% if object.author == user %}
+	<a href="{% url 'news-update' object.id %}" class="btn btn-info">Обновить пост</a>
+	<a href="{% url 'news-delete' object.id %}" class="btn btn-danger">Удалить пост</a>
+	{% endif %}
+	<div class="alert alert-light">
+		<a href="{% url 'top' %}">Вернуться назад к статье</a>
+	</div>
+
+
+{% endblock main_section %}

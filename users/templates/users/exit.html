@@ -1,0 +1,18 @@
+{% extends 'top/main.html' %}
+
+{% block main_section %}
+
+<div class="form-section">
+	<h2>Вы вышли из своего аккаунта</h2>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+	
+	</form>
+</div>
+	
+<hr>
+<a href="{% url 'auth' %}">Войти в личный кабинет снова</a>
+
+{% endblock main_section %}
+

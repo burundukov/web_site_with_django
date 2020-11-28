@@ -1,0 +1,15 @@
+{% extends 'top/main.html' %}
+
+{% block main_section %}
+
+<div class="form-section">
+	<h2>Вы точно хотите удалить статью "{{ object.title }}"?</h2>
+	<form method="post">
+		{% csrf_token %}
+	<button type="submit" class="btn btn-danger">Да, удалить</button>
+	<a href="{% url 'news-detail' object.id %}">Нет, вернуться назад</a>
+	</form>
+</div>
+	
+
+{% endblock main_section %}

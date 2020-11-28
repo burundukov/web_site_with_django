@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light rounded mb-5">
+    <a class="navbar-brand" href="{% url 'top' %}">Игорь.ру</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'top' %}">Главная<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'about' %}">О нас</a>
+        </li>        
+      </ul>
+      {% if user.is_authenticated %}
+        <a href="{% url 'news-add' %}" class="btn btn-outline-secondary mr-2">Добавить статью</a>
+        <a href="profile" class="btn btn-outline-secondary mr-2">{{ user.username }}</a>
+        <a href="{% url 'exit' %}" class="btn btn-outline-secondary mr-2">Выйти</a>
+      {% else %}
+        <a href="{% url 'registration' %}" class="btn btn-outline-secondary mr-2">Регистрация</a>
+        <a href="{% url 'auth' %}" class="btn btn-outline-secondary">Войти</a>
+      {% endif %}
+    </div>
+  </nav>
+
+	
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-8">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-success">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% block main_section %}
+		{% endblock %}
+	</div>
+
+    <div class="col-md-4">
+    	<h3>Какая-то интересная фигня о 15 скучных явлениях</h3>
+		<img src="https://cdn.pixabay.com/photo/2019/11/10/16/47/nature-4616282_960_720.jpg" alt="images" class="img-thumbnail mb-1">
+		<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto, molestias distinctio incidunt cupiditate porro ipsa similique corrupti saepe delectus laborum qui quos ipsam corporis adipisci sed laudantium voluptas quae beatae!</p>
+		<a href="" target="_blank">
+			<button class="btn btn-warning offset-md-3">Посмотреть</button>
+		</a>
+    
+    
+    	<h3>Интересные статьи</h3>
+    	<img src="https://cdn.pixabay.com/photo/2013/06/10/09/23/desert-123978_960_720.jpg" alt="images" class="img-thumbnail">
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quidem sit molestias eveniet consequuntur nobis commodi obcaecati qui necessitatibus error tempore numquam sed reiciendis rem quia dicta veritatis rerum iure sunt maxime, explicabo ipsum, odit? Enim, dolores inventore architecto eius quidem libero, cum explicabo beatae ex, soluta rem perferendis eum.</p>
+		
+		<a href="" target="_blank">
+			<button class="btn btn-warning offset-md-3">Посмотреть</button>
+		</a>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
